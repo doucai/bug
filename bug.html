@@ -13,5 +13,37 @@
     1.Vue 组件定义全局变量集中方法      http://www.jb51.net/article/115093.htm
     2.a页面跳转b页面到指定位置          https://blog.csdn.net/n_meng/article/details/62043256
     3.个人vs code配置                  。/img/。。。。。。
+    4.a空标签在ie下无法点击            {background: #fff;opacity: 0;filter: alpha(opacity=0);}
+    5.不改变meta值的rem适配：
+        var doc=document.docementElement;//减少dom操作
+        resize(){
+            //获取dom文档宽
+            var clientWidth=doc.clientWidth,
+                htmlFontSize=doc.style.fontSize;
+                //动态改变html的font-size,以640为例
+                if(clientWidth<640){//设置边界值以防万一
+                    htmlFontSize=‘100px’;
+                }else(){
+                    htmlFontSize=clientWidth/640*100+'px';
+                }
+        }
+        //检测屏幕尺寸变化同步font-size，如横竖屏切换时触发
+        window.onresize=function(){
+            resize()
+        }；
+        //页面初始化时触发
+        resize()
+        
+    6.改变rem值得适配：
+        $(document).ready(function () {
+        //20171228
+            var scale = 1 / devicePixelRatio;
+            document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale+',user-scalable=no');
+            document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+        //20171228
+          //fixed mobile home page slider width
+          $(window).trigger('resize');
+        })
+
 </body>
 </html>
