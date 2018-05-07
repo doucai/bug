@@ -44,6 +44,13 @@
           //fixed mobile home page slider width
           $(window).trigger('resize');
         })
-
+    7.内容显示不完加省略号：
+    .nowrap{
+        text-overflow: ellipsis;
+        display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+        -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+        -webkit-line-clamp: 2; /** 显示的行数 **/
+        overflow: hidden;  /** 隐藏超出的内容 **/
+    }
 </body>
 </html>
