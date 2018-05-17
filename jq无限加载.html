@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var p="{$other.p}";  
+        if(p=="") p=1;  
+        var stop=true;//触发开关，防止多次调用事件  
+        $(window).scroll(function() {    
+            //当内容滚动到底部时加载新的内容 100当距离最底部100个像素时开始加载.  
+            if ($(this).scrollTop() + $(window).height() + 100 >= $(document).height() && $(this).scrollTop() > 100) {    
+                    
+                if(stop==true){  
+                    stop=false;  
+                    p=p+1;//当前要加载的页码    
+                    canshu="?t={$other.t}&p="+p+"&cid={$other.cid}";  
+                    //加载提示信息  
+                    $("#showlists").append("<li class='ajaxtips'><div style='font-size:2em'>Loding.....</div></li>");  
+                    $.get("__URL__/nextpage"+canshu,function(data){  
+                        $(".ajaxtips").hide();  
+                        $("#showlists").append(data);//把新的内容加载到内容的后面  
+                        stop=true;  
+                    })  
+                }  
+            }    
+        });       
+    </script>
+</body>
+</html>
