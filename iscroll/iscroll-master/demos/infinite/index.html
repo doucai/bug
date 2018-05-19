@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>iScroll demo: infinite scrolling</title>
+		<style type="text/css">
+			* {
+			margin: 0;
+			padding: 0;
+			}
+			
+			
+			body,
+			ul,
+			li {
+				padding: 0;
+				margin: 0;
+				border: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				font-family: ubuntu, helvetica, arial;
+				overflow: hidden;
+				/* this is important to prevent the whole page to bounce */
+			}
+		
+			
+			#wrapper {
+				position: absolute;
+				z-index: 1;
+				top: 45px;
+				bottom: 48px;
+				left: 0;
+				width:328px;height:350px;
+				overflow: hidden;
+			}
+			
+			#scroller {
+				position: absolute;
+				z-index: 1;
+			
+				width:328px;height:350px;
+			
+			}
+			
+			#scroller ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				width:328px;height:350px;
+				text-align: left;
+				position: relative;
+			
+			}
+			
+			#scroller li {
+				width: 100%;
+				height: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			
+				border-bottom: 1px solid #efefef;color: #b7b7b7;font-size: 12px;box-sizing: border-box;padding-left: 10px;}
+			}
+			
+			#scroller li p{height: 22px;line-height: 22px;margin: 0;}
+			#scroller li p .mr48{display: inline-block;margin-right: 48px;}
+			#scroller li p .span-w22{display:inline-block;width: 22px;height: 28px;margin-right: 2px;}
+			#scroller li p img{display:inline-block;margin: 2px 4px 0 0;vertical-align: top;}
+			#scroller li .amap-p1{height: 28px;line-height: 28px;margin-top: 12px;}
+		</style>
+	</head>
+
+	<body onload="loaded()">
+
+
+		<div id="wrapper">
+			<div id="scroller">
+				<ul>
+					<li class="row">
+						<p class="amap-p1">1<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">2<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">3<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">4<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">5<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">6<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+					<li class="row">
+						<p class="amap-p1">7<img src="img/icon01.jpg" /> 科勒设计体验中心</p>
+						<p>地址：南京西路456号</p>
+						<p><span class="mr48">电话：53755058</span> <span>门店类型：旗舰店</span></p>
+						<p><img src="img/shouji.jpg" /><span style="color: #6386ff;">发送到手机</span></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../build/iscroll-infinite.js"></script>
+		<!--<script type="text/javascript" src="../demoUtils.js"></script>-->
+		<script type="text/javascript">
+			/******************************************************************************
+			 *
+			 * For the sake of keeping the script dependecy free I'm including a custom
+			 * AJAX function. You should probably use a third party plugin
+			 *
+			 */
+			function ajax(url, parms) {
+				parms = parms || {};
+				var req = new XMLHttpRequest(),
+					post = parms.post || null,
+					callback = parms.callback || null,
+					timeout = parms.timeout || null;
+
+				req.onreadystatechange = function() {
+					if(req.readyState != 4) return;
+
+					// Error
+					if(req.status != 200 && req.status != 304) {
+						if(callback) callback(false);
+						return;
+					}
+
+					if(callback) callback(req.responseText);
+				};
+
+				if(post) {
+					req.open('POST', url, true);
+					req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				} else {
+					req.open('GET', url, true);
+				}
+
+				req.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+				req.send(post);
+
+				if(timeout) {
+					setTimeout(function() {
+						req.onreadystatechange = function() {};
+						req.abort();
+						if(callback) callback(false);
+					}, timeout);
+				}
+			}
+			/*
+			 *****************************************************************************/
+
+			var myScroll;
+
+			function loaded() {
+				myScroll = new IScroll('#wrapper', {
+					mouseWheel: true,
+					//infiniteElements: '#scroller .row',
+					//infiniteLimit: 2000,
+					dataset: requestData,
+					dataFiller: updateContent,
+					cacheSize: 1000
+				});
+			}
+
+			function requestData(start, count) {
+				ajax('dataset.php?start=' + +start + '&count=' + +count, {
+					callback: function(data) {
+						data = JSON.parse(data);
+						myScroll.updateCache(start, data);
+					}
+				});
+			}
+
+			function updateContent(el, data) {
+				el.innerHTML = data;
+			}
+
+			document.addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, isPassive() ? {
+				capture: false,
+				passive: false
+			} : false);
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,8 @@
+html,body,ul,li,p,dl,dt,dd,h1,h2,h3,h4,h5,h6,input,form {margin: 0;padding: 0;}
+ul,li {list-style-type: none;list-style: none;}
+a{text-decoration: none;}
+img {border: 0;}
+table{border-collapse:collapse;border-spacing:0;}
+html,body {margin: 0 auto;font-size: 24px;font-family: "微软雅黑","宋体" !important;font-weight: normal;}
+.clearfix:after {content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0;font-size: 0;}
+.clearfix {*zoom: 1;} 

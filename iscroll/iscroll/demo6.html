@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{width: 100%;height: 100%;overflow: hidden;}
+			body{display: flex;flex-direction: column;}
+			header,footer{height: 50px;background-color: orange;width: 100%;}
+			.wrapper{flex: 1;overflow: hidden;position: relative;width: 100%;}
+		</style>
+	</head>
+	<body>
+		<!--关于iscroll中的一些方法-->
+		<header></header>
+		<div class="wrapper" id="wrapper">
+			<ul>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+				<li>班长和博士不可不说的故事</li>
+			</ul>
+		</div>
+		<footer>
+		  <a href="#" onclick="tops()">回到顶部</a>
+		  <a href="#" onclick="bot()">回到底部</a>
+		</footer>
+		<script type="text/javascript" src="js/lib/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/lib/iscroll-min.js" ></script>
+		<script type="text/javascript">
+			var iscroll = new IScroll("#wrapper",{
+				mouseWheel:true,
+				scrollbars:true,
+				tap:true
+			})
+		    //回到顶部
+			function tops(){
+				//scrollTo(x,y,time,timing-function)
+				iscroll.scrollTo(0,-100,1000)
+			}
+			//回到底部
+			function bot(){
+				//iscroll.scrollToElement(el,time,timing-function)
+				iscroll.scrollToElement($("#wrapper li:last-child").get(0),1000,null)
+				
+			}
+			
+			$("#wrapper li").on("tap",function(){
+				this.style.background = "yellow"
+			})
+		</script>
+	</body>
+</html>

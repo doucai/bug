@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{width: 100%;height: 100%;overflow: hidden;}
+			header{height: 40px;width: 100%;text-align: center;color: #fff;line-height: 40px;background: gray;position: absolute;left: 0;top:0;}
+			footer{height: 40px;width: 100%;text-align: center;color:#fff;line-height: 40px;background-color: gray;position: absolute;bottom: 0;left: 0;}
+			.wrapper{width: 100%;position: absolute;top: 90px;bottom: 40px;overflow: hidden;}
+			.sub{width: 100%;position: absolute;top: 40px;left:0;background-color: deeppink;height: 50px;line-height: 50px;}
+			.sub ul {width: 200%;}
+			.sub ul li {width: 100px;float: left;}
+		</style>
+	</head>
+	<body>
+		<!--icroll 中的横向滚动 样式必须由我们手动添加 他只给你提供滚动效果-->
+		<header>移动端</header>
+		<div class="wrapper" id="wrapper">
+			<ul>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			    <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>	
+			   <li>你们都别惹我生气了</li>
+               <li>你们都别惹我生气了</li>
+			   <li>你们都别惹我生气了</li>
+			</ul>
+		</div>
+		<div class="sub" id="sub">
+			<ul>
+				<li>好好学习</li>
+				<li>好好学习</li>
+				<li>好好学习</li>
+				<li>好好学习</li>
+				<li>好好学习</li>
+				<li>好好学习</li>
+			</ul>
+		</div>
+		<footer></footer>
+		<script type="text/javascript" src="js/lib/iscroll-min.js" ></script>
+		<script type="text/javascript">
+			var scroll = new IScroll("#wrapper",{
+				mouseWheel:true,
+				scrollbars:true
+			})
+			var scoll1 = new IScroll("#sub",{
+				mouseWheel:true,
+				scrollbars:false,
+				//设置横向滚动
+				scrollX:true,
+				scrollY:false
+			})
+		</script>
+	</body>
+</html>

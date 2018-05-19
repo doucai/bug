@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>移动端300ms延迟</h2>
+		<p>移动端300ms 延迟 是ios手机 需要300ms时间进行判断 当前点击事件是单击还是双击</p>
+		<p>第一种解决办法 引入fastClick.js插件</p>
+		<p>引入tap事件(jquery,zepto)</p>
+		<h2>移动端常用的ui框架</h2>
+		<p>mui material Design ant Design mobile framework7 sui msui Jingle light7 museUI Vux mintUI....</p>
+		<p>mui Dcloud 开源的 </p>
+		<p>material Design google开源的</p>
+		<p>ant Design 有阿里蚂蚁金服ued团队 开源</p>
+		<p>framework7 翻译由淘宝团队开发的国外ui</p>
+		<p>sui msui antd的前身</p>
+		<p>Jingle（easyUI） 国外个人开发</p>
+		<p>light7 阿里团队中个人开发</p>
+		<p>museUI 基于vue开发的一个ui框架</p>
+		<p>vux 基于vue的一个ui框架 尤雨溪推荐使用的</p>
+		<p>mintUI Ele ued团队开发的ui框架</p>
+		
+		------------------------------------------------
+		<p>this 指向</p>
+		<p>全局变量声明执行 this=>window</p>
+		<p>脱离事件流 的函数或者闭包 this=>window</p>
+		<p>事件触发函数 this=>事件源</p>
+		<p>实例化以后的构造函数 this=>实例化后的对象</p>
+	<!--	<div  onclick="add()">122</div>-->
+	   <button id="sub">点击我</button>
+		<script type="text/javascript" src="js/lib/jquery.min.js" ></script>
+		<script>
+			var  a = 1111;
+//			setTimeout(function(){
+//				alert(this)
+//			},1000)
+			
+			function add(){
+				alert(this)
+			}
+			
+			function Lizi(){
+				this.x = "1343"
+				this.y = "1234"
+				console.log(this)
+			}
+			
+			var lizi = new Lizi()
+		    lizi.save = "123"
+			
+			$("#sub").click(function(event){
+				 console.log(event.target)
+				console.log(this)
+			})
+			
+			$(function(){
+//				function home(){
+//					alert(12343)
+//				}
+//				$("#home").click(function(){
+//					alert(1233)
+//				})
+                $("#home").on("click",function(){
+                	alert(1233)
+                })
+
+			})
+//			function home(){
+//				alert(123)
+//			}
+		</script>
+	</body>
+</html>

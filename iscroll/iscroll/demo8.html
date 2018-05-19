@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			html,body{width: 100%;height: 100%;overflow: hidden;}
+			body{display: -webkit-box;-webkit-box-orient: vertical;}
+			header,footer{height: 50px;width: 100%;background-color: darkslategrey;}
+			.wrapper{-webkit-box-flex: 1;position: relative;overflow: hidden;}
+		</style>
+	</head>
+	<body>
+		<!--关于iscroll的监听事件-->
+		<header></header>
+		<div class="wrapper" id="wrapper">
+			<ul>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+                <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+                <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+               <li>我的心情好忧伤啊</li>
+			</ul>
+		</div>
+		<footer></footer>
+		<script type="text/javascript" src="js/lib/iscroll-min.js" ></script>
+		<script>
+			var iscroll = new IScroll("#wrapper",{
+				mouseWheel:true,
+				scrollbars:true
+			})
+			//beginScrollStart 滚动之前触发
+			//scrollStart 手指按下 还没滚动时触发
+			//scroll 滚动时触发 probe 独有
+			//scrollEnd 滚动结束时触发
+			//zoomStart zoom插件中才有 缩放开始时触发
+			//zoomEnd 缩放结束时触发
+			iscroll.on("scrollEnd",function(){
+				alert("这是真的啊")
+			})
+		</script>
+	</body>
+</html>

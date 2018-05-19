@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="cookies" id="cookies" value="" />
+	<input type="button" id="box" value="设置" />
+	<input type="button" id="box2" value="改变" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#box").click(function(){
+			var xiaocai =$("#cookies").val();
+			$.cookie("xiaocai",xiaocai,{path:"/",expiress:7,sucue:true})
+			console.log($.cookie("xiaocai"))
+		})
+		
+		$("#box2").click(function(){
+			$.cookie("xiaocai","456")
+		})
+		
+	</script>
+</body>
+</html>
