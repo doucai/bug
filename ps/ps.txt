@@ -1,0 +1,19 @@
+
+
+ctrl+1实际大小
+ctrl++放大
+ctrl+-缩小
+ctrl+d取消选中
+ctrl+t变形工具
+M选区工具
+V移动工具
+ALT+删除键   前景色
+ctrl+删除键  背景色
+ctrl+s保存
+ctrl+shift+s另存为
+ctrl+n新建
+ctrl+o打开
+ctrl+空格  抓手工具
+ctrl+r标尺
+ctrl+h辅助线显示隐藏
+F8信息面板

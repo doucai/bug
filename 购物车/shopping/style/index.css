@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+body {
+	background: #eee;
+	font-size: 12px;
+	font-family: 'Microsoft Yahei';
+}
+#list {
+	margin: 30px auto;
+	width: 780px;
+}
+#list li{
+	margin: 10px;
+	float: left;
+	width: 240px;
+	background: #fff;
+}
+#list .add-goods {
+	margin: 4px auto;
+	width: 120px;
+	line-height: 24px;
+	text-align: center;
+	color: #fff;
+	background: red;
+	cursor: pointer;
+}
+#list img{
+	margin: 0 auto;
+	display: block;
+}
+#list .goods-title{
+	line-height: 36px;
+	text-align: center;
+}
+#list .price {
+	color: #666;
+	line-height: 30px;
+	text-align: center;
+}
