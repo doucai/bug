@@ -25,7 +25,7 @@ axios跨域处理：
 config/index.js目录文件
 proxyTable: {
     '/api': {  //使用"/api"来代替"http://120.76.205.241:8000" 
-      target: '', //源地址 
+      target: 'http://120.76.205.241:8000', //源地址 
       changeOrigin: true, //改变源 
       pathRewrite: { 
         '^/api': '/' //路径重写 
@@ -38,6 +38,6 @@ rem布局:
 /* 1rem = html 的font-size =50px
     对应640的图
     86px=.86rem
-    1px=.1rem
+    1px=.01rem
 */
 html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-color: transparent;}
