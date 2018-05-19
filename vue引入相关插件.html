@@ -10,6 +10,17 @@ import './assets/style/reset.css'
 npm install fastclick --save
 
 
+引入stylus和stylus-loader
+npm install stylus --save
+npm install stylus-loader --save
+使用：在webpack.base.conf.js 的alias中创建别名，然后再main.js中引入，在其他页面中引入需要加 "~"
+eg:  
+alias:      'styles': resolve('src/assets/styles'),
+main.js:    import 'styles/iconfont.css'
+header.vue: @import "~styles/varibies.styl"
+
+
+
 axios跨域处理：
 config/index.js目录文件
 proxyTable: {
@@ -21,3 +32,12 @@ proxyTable: {
         } 
     } 
   },
+
+
+rem布局:
+/* 1rem = html 的font-size =50px
+    对应640的图
+    86px=.86rem
+    1px=.1rem
+*/
+html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-color: transparent;}
