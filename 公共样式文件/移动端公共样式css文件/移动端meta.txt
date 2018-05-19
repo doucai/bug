@@ -1,0 +1,26 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+/*iphone 6plus*/
+@media only screen and (min-width:414px ) {
+html,body{font-size: 18px !important;}
+}
+
+/* ipad∫·∆¡ */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape){
+html,body{font-size: 22px !important;}
+}
+
+/* ipad ˙∆¡ */
+@media (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait) {
+html,body{font-size: 26px !important;}
+}

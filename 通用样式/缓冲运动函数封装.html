@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>缓冲运动</title>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			var
+				oStart = $('start'),
+				oBox   = $('box'),
+				iTarget = 0,
+				oTimer = null;
+
+			oStart.onclick = function () {
+			
+				bufferMove(oBox, { left:600, top: 300, opacity: 30}, function () {
+					console.log('我已经运动完毕了！');
+				});
+			}
+
+
+			function bufferMove(obj, oTarget, fn) {
+				clearInterval(obj.oTimer);
+
+				obj.oTimer = setInterval(function () {
+					// 假设所有的属性均以运动完毕
+					var bBtn = true;
+					for(var sAttr in oTarget) {
+						if(sAttr === 'opacity') {
+							var iCur = parseInt(getStyle(obj, sAttr) * 100);
+						} else {
+							var iCur = parseInt(getStyle(obj, sAttr));
+						}
+						/*8是一个系数*/
+						var iSpeed = (oTarget[sAttr] - iCur) / 8;
+						
+						iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+						var iNext = iCur + iSpeed;
+						if(sAttr === 'opacity') {
+							obj.style.opacity = iNext / 100;
+							obj.style.filter = 'alpha(opacity='+ iNext +')';
+						} else {
+							obj.style[sAttr] = iNext + 'px';
+						}
+
+						// 当前的位置不等于中点値，说明属性尚未运动完毕
+						if(iNext !== oTarget[sAttr]) {
+							bBtn = false;
+						}
+					}
+
+					// 如果bBTN为true，则会所名所有的属性均已运动完毕
+					if(bBtn) {
+						clearInterval(obj.oTimer);
+						if(fn) {
+							fn();
+						}
+					}
+				}, 50);
+			}
+
+			function getStyle(obj, sAttr) {
+				if(obj.currentStyle) {
+					return obj.currentStyle[sAttr];
+				} else {
+					return getComputedStyle(obj, false)[sAttr];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="start">开始</button>
+	<div id="box" style="width: 100px; height: 100px; background: red; border-radius: 50%; position: absolute; "></div>
+</body>
+</html>

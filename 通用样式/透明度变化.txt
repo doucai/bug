@@ -1,0 +1,41 @@
+	<meta charset="UTF-8">
+	<title>透明度的变化</title>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			var
+				oStart = $('start'),
+				oRed = $('red'),
+				oTimer = null,
+				iSpeed = 5;
+			oStart.onclick = function () {
+				clearInterval(oTimer);
+				oTimer = setInterval(function () {
+					var iCur = getStyle(oRed, 'opacity') * 100;
+					var iTarget = iCur - 5;
+
+					oRed.style.opacity = iTarget/100;
+					oRed.style.filter = 'alpha(opacity='+ iTarget +')';
+
+					// 清除定时器
+					if(iTarget <=0) {
+						clearInterval(oTimer);
+					}
+				}, 50);
+			}
+
+			function getStyle(obj, sAttr) {
+				if(obj.currentStyle) {
+					return obj.currentStyle[sAttr];
+				} else {
+					return getComputedStyle(obj, false)[sAttr];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="start">开始</button>
+	<div id="red" style="position: absolute;width: 400px;height: 400px; background: red;top: 50px; border-radius: 50%; "></div>
+</body>
+</html>

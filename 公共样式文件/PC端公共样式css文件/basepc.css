@@ -1,0 +1,14 @@
+@font-face { font-family: 'Helvetica Neue';src:url('../fonts/helvetica_neue-roman.ttf')  format('truetype'); }
+html, body { position: relative; margin: 0; padding: 0; font-family: 'Helvetica Neue','Microsoft YaHei'; background-color: #ffffff; height: 100%;}
+ul, ol, { margin: 0; padding: 0; list-style: none; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+p,h1,h2,h3,h4,h5 { margin: 0; padding: 0;  font-weight: normal; border: none; }
+img { display: block; border: none; vertical-align: middle;}
+select,option { border: none; background-color: #ffffff;appearance:none;-moz-appearance:none;-webkit-appearance:none;outline:none;}
+select::-ms-expand { display: none; }
+input,textarea { outline:none; }
+i { display: inline-block; }
+.clearfix:before,
+.clearfix:after { content: " ";  display: table; }
+.clearfix:after { clear: both; }

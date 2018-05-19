@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数封装</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTimer = null,
+					oBox   =$('box'),
+					oBtn   =$('btn');
+			
+				oBtn.onclick = function(){
+					packfun(oBox,{left:500},function(){
+						packfun(oBox,{top:400})
+					})
+				}
+				
+			}
+			//封装函数
+			function packfun(obj,oTaget,fn){
+				clearInterval(obj.oTimer);
+				obj.oTimer=setInterval(function(){
+					var bBtn = true;
+					for(var aATtr in oTaget){
+						if(aATtr === 'opacity'){
+							var iCur=parseInt(getStyle(obj,aATtr)*100);
+						}else{		
+						var iCur=parseInt(getStyle(obj,aATtr));
+						}
+						
+						var iSpeed =( oTaget[aATtr]-iCur)/8;
+							iSpeed =iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+							
+						var iNext =iCur+iSpeed;
+						if(aATtr === 'opacity'){
+							obj.style.opacity = iNext/100;
+							obj.style.filter  = 'alpha(opacity='+iNext+')';
+						}else{
+							obj.style[aATtr]  =iNext+'px';
+						}
+						if(iNext!== oTaget[aATtr]){
+							bBtn=false;
+						}
+						
+					}
+					if(bBtn) {
+						clearInterval(obj.oTimer);
+						fn && fn();
+					}
+				},50)
+			}
+			//调用对象的某个属性
+			function getStyle(obj, sAttr) {
+				if(obj.currentStyle) {
+					return obj.currentStyle[sAttr];
+				} else {
+					return getComputedStyle(obj,false)[sAttr];
+				}
+			}
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+		</script>
+	</head>
+	<body style="margin: 0;">
+		<button id="btn">开始</button>
+		<div id="box" style="width: 100px;height: 		100px;background: red;position: 		absolute;"></div>
+	</body>
+</html>

@@ -1,0 +1,129 @@
+css:
+s
+/*body {
+     height: 100%;
+     color:#333;
+     font: 0.21875rem/1.4286 Helmet ,Arial, SimSun, Helvetica, sans-serif;
+     background:#fff;
+     overflow-y:scroll;
+     overflow-x:hidden;
+}
+ */
+ @charset "utf-8";
+/*reset*/
+ body,button,input,select,textarea{
+     font:100%/1.4286 "Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi ;
+}
+ body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,article,aside,footer,header,hgroup,nav,section,menu{
+     margin:0;
+     padding:0;
+     -webkit-text-size-adjust:100%;
+}
+ table{
+     border-collapse:collapse;
+     border-spacing:0;
+}
+ em,i{
+     font-style:normal;
+}
+ ul, ol ,li{
+     list-style:none;
+}
+ img{
+     border:0;
+}
+ input,img{
+     vertical-align:middle;
+}
+ article,aside,footer,header,hgroup,nav,section,menu{
+     display:block;
+}
+ a{
+     text-decoration:none;
+     display: inline-block;
+}
+ .clearfix:after{
+     content:"";
+     display:block;
+     height:0;
+     clear:both;
+     visibility:hidden;
+}
+ html,body{
+     height:100%;
+     -webkit-text-size-adjust:100%;
+     -webkit-font-smoothing:antialiased;
+     color: #666666;
+     background-color:#fff !important;
+}
+ a,input,textarea{
+     -webkit-tap-highlight-color:rgba(0,0,0,0);
+     tap-highlight-color:rgba(0,0,0,0);
+     outline:none;
+     -webkit-font-smoothing:antialiased 
+}
+
+
+
+
+javascript:
+
+$(document).ready(function () {
+	/*字体*/
+	(function flexible (window, document) {
+			  var docEl = document.documentElement
+			  var dpr = window.devicePixelRatio || 1
+			
+			  // adjust body font size
+			  function setBodyFontSize () {
+			    if (document.body) {
+			      document.body.style.fontSize = (12 * dpr) + 'px'
+			    }
+			    else {
+			      document.addEventListener('DOMContentLoaded', setBodyFontSize)
+			    }
+			  }
+			  setBodyFontSize();
+			
+			  // set 1rem = viewWidth / 10
+			  function setRemUnit () {
+			    var rem = docEl.clientWidth / 10
+			    docEl.style.fontSize = rem + 'px'
+			  }
+			
+			  setRemUnit()
+			
+			  // reset rem unit on page resize
+			  window.addEventListener('resize', setRemUnit)
+			  window.addEventListener('pageshow', function (e) {
+			    if (e.persisted) {
+			      setRemUnit()
+			    }
+			  })
+			
+			  // detect 0.5px supports
+			  if (dpr >= 2) {
+			    var fakeBody = document.createElement('body')
+			    var testElement = document.createElement('div')
+			    testElement.style.border = '.5px solid transparent'
+			    fakeBody.appendChild(testElement)
+			    docEl.appendChild(fakeBody)
+			    if (testElement.offsetHeight === 1) {
+			      docEl.classList.add('hairlines')
+			    }
+			    docEl.removeChild(fakeBody)
+			  }
+			}(window, document))
+	
+	/*轮播*/
+	var mySwiper = new Swiper ('.swiper-container', {
+	    direction: 'horizontal',
+	    loop: true,
+	    autoplay:true,
+	    speed:5000,
+	     /*如果需要分页器*/
+	    pagination: '.swiper-pagination',		
+		/*重新轮播*/
+		autoplayDisableOnInteraction : false,
+	})        
+})
