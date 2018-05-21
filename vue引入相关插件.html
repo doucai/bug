@@ -41,3 +41,23 @@ rem布局:
     1px=.01rem
 */
 html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-color: transparent;}
+
+
+改变rem值得适配：
+$(document).ready(function () {
+//20171228
+    var scale = 1 / devicePixelRatio;
+    document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale='+scale+',maximum-scale='+scale+',minimum-scale='+scale+',user-scalable=no');
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+//20171228
+  //fixed mobile home page slider width
+  $(window).trigger('resize');
+})
+
+swiper:
+稳定版npm install vue-awesome-swiper@2.6.7 --save
+npm install vue-awesome-swiper@2.6.7 --save
+
+// >>>表示当前页面下的样式不受coped限制
+.wrap >>> .swiper-pagination-bullet-active
+  background :#fff
