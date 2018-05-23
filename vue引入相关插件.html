@@ -11,6 +11,8 @@ npm install fastclick --save
 
 npm install --sava axios
 
+npm install better-scroll --save
+
 引入stylus和stylus-loader
 npm install stylus --save
 npm install stylus-loader --save
@@ -62,3 +64,17 @@ npm install vue-awesome-swiper@2.6.7 --save
 // >>>表示当前页面下的样式不受coped限制
 .wrap >>> .swiper-pagination-bullet-active
   background :#fff
+
+
+跳转页面:
+ this.$router.push跳转不过去
+  this.$router.push({
+    path:'/'
+  })
+或者 location.href="/"
+
+
+路由去除#:
+mode:'history'
+路由带#:
+mode:'hash'
