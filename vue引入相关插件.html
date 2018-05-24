@@ -78,3 +78,8 @@ npm install vue-awesome-swiper@2.6.7 --save
 mode:'history'
 路由带#:
 mode:'hash'
+
+优化:只在第一次渲染的时候请求数据,并存入内存
+<keep-alive></keep-alive>
+在app.vue中使用了keep-alive时候,页面重新显示的时候会执行activated
+activated () {}
