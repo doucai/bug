@@ -19,14 +19,11 @@
 		        <div class="swiper-slide"><a href="http://bbs.dedecms.com/">456</a></div>
 		        <div class="swiper-slide"><a href="http://help.dedecms.com/video/quickstart/">789</a></div>
 		    </div>
-		    <!-- Èç¹ûĞèÒª·ÖÒ³Æ÷ -->
 		    <div class="swiper-pagination"></div>
 		    
-		    <!-- Èç¹ûĞèÒªµ¼º½°´Å¥ -->
 		   <!-- <div class="swiper-button-prev"></div>
 		    <div class="swiper-button-next"></div>-->
 		    
-		    <!-- Èç¹ûĞèÒª¹ö¶¯Ìõ -->
 		    <!--<div class="swiper-scrollbar"></div>-->
 		</div>
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
@@ -35,15 +32,16 @@
 			 var mySwiper = new Swiper ('.swiper-container', {
 			    autoplay:'3000',
 			    loop: true,
-			    
-			    // Èç¹ûĞèÒª·ÖÒ³Æ÷
+				//ç›‘å¬é¡µé¢æ˜¯å¦å˜åŒ–,è‹¥å˜åŒ–åˆ™ä»æ–°åŠ è½½ 
+			    observeParents:true,
+				observer:true,
 			    pagination: '.swiper-pagination',
 			    
-			    // Èç¹ûĞèÒªÇ°½øºóÍË°´Å¥
+			    // å·¦å³æŒ‰é’®
 			    nextButton: '.swiper-button-next',
 			    prevButton: '.swiper-button-prev',
 			    
-			    // Èç¹ûĞèÒª¹ö¶¯Ìõ
+			    // åˆ†æ¶²å™¨
 			    //scrollbar: '.swiper-scrollbar',
 			  })        
 			 
