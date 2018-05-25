@@ -17,7 +17,6 @@ npm install better-scroll --save
 判断手机浏览器有没有promise,没有了就去添加
 npm install babel-polyfill --save
 
-
 引入stylus和stylus-loader
 npm install stylus --save
 npm install stylus-loader --save
@@ -114,3 +113,20 @@ package.json:
   "start": "npm run dev",
   "build": "node build/build.js"
 },
+
+
+// 异步加载组件（在app.js较小的情况下不建议是由异步组件进行代码拆分）
+index.js文件
+routes: [
+    {
+      path: '/',
+      name: 'Home',
+      // 异步加载组件
+      component: ()=>import('@/page/Home/Home')
+    }
+  ],
+vue中所有的组件都可以使用异步加载组件
+export default {
+  components: {
+    HomeHeader:()=>import('./components/header')
+  },
