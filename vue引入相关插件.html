@@ -13,6 +13,11 @@ npm install --sava axios
 
 npm install better-scroll --save
 
+解决部分手机白屏问题：
+判断手机浏览器有没有promise,没有了就去添加
+npm install babel-polyfill --save
+
+
 引入stylus和stylus-loader
 npm install stylus --save
 npm install stylus-loader --save
@@ -80,7 +85,8 @@ mode:'history'
 mode:'hash'
 
 优化:只在第一次渲染的时候请求数据,并存入内存
-<keep-alive></keep-alive>
+<keep-alive exclude="模板名字"></keep-alive>
+exclude：表示其指定的模板不做缓存
 在app.vue中使用了keep-alive时候,页面重新显示的时候会执行activated
 activated () {
   // 监听scroll执行handleScroll
@@ -92,6 +98,19 @@ deactivated () {
 }
 
 
+// 每次回到页面的时候保持初始值为X:0,y:0
+  scrollBehavior(to,from,savedPosition){
+    return{x:0,y:0}
+  }
+
 
 router-link中使用tag等于一个dom元素可以让router-link变为这个dom
 <router-link tag="li"></router-link>
+
+package.json:
+--host 0.0.0.0 表示可以通过ip地址访问
+"scripts": {
+  "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
+  "start": "npm run dev",
+  "build": "node build/build.js"
+},
