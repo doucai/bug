@@ -82,7 +82,16 @@ mode:'hash'
 优化:只在第一次渲染的时候请求数据,并存入内存
 <keep-alive></keep-alive>
 在app.vue中使用了keep-alive时候,页面重新显示的时候会执行activated
-activated () {}
+activated () {
+  // 监听scroll执行handleScroll
+  window.addEventListener('scroll',this.handleScroll)
+},
+// 引用了keep-alive后会产生两个生命周期，activated每次页面加载时调用，deactivated每次离开页面时调用
+deactivated () {
+  window.removeEventListener('scroll',this.handleScroll)
+}
+
+
 
 router-link中使用tag等于一个dom元素可以让router-link变为这个dom
 <router-link tag="li"></router-link>
