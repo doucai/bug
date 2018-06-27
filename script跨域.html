@@ -1,0 +1,23 @@
+document.onkeyup = function () {
+    var val = text.value
+    var script = document.createElement('script')
+    script.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${val}&cb=dosomething`;
+    document.body.appendChild(script)
+  }
+  function dosomething (data) {
+    var oUl = document.querySelector('#lists ul')
+    oUl.innerHTML = ''
+    data.s.map(function (html) {
+      var oLi =  document.createElement('li')
+      oLi.innerHTML = html
+      oLi.onclick = function () {
+        window.location.href = `http://www.baidu.com/s?wd=${html}`
+      }
+      oUl.appendChild(oLi)
+    })
+}
+
+作者：行无忌
+链接：https://juejin.im/post/5b2f6048e51d455e2b5aaa5b
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
