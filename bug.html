@@ -56,5 +56,18 @@
     8.a链接锚点
     <a href="#icon">点击滚动到icon</a>
     <div id="icon">滚动到了icon</div>
+
+    9.字体小于12px（https://juejin.im/post/5b4812a05188251b20016fcc）
+    .tinyscale {
+        width: 200%;
+        margin-left: -50%;
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+    }
+    在含小字体的占宽 100% 的父级容器上添加 tinyscale 类，而后将其中所有的尺寸值及间距值乘 2。
+    缩小为 0.5 倍后：宽度恢复 100%；尺寸值及间距值恢复为所需值。
+    缩小处理后的留白为 (1 - 0.5) * 200% / 2 即 50%，所以使用 margin-left 向左折回 50% 即可，这样的处理无需考虑横向尺寸不固定的问题。
+    上述方法的缺点是仅适用于定高的情况，因为纵向的折回值若使用百分比其基准值是宽度非高度.
+
 </body>
 </html>
