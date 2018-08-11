@@ -1,0 +1,64 @@
+// 掘金这里不是全局监听，应该只是监听文章的dom范围内。
+    document.body.oncopy = event => {
+        event.preventDefault(); // 取消默认的复制事件 
+        let textFont, copyFont = window.getSelection(0).toString(); // 被复制的文字 等下插入
+        // 防知乎掘金 复制一两个字则不添加版权信息 超过一定长度的文字 就添加版权信息
+        if (copyFont.length > 10) {
+            textFont = copyFont + '\n'
+                + '作者：OBKoro1\n'
+                + '链接：https://juejin.im/user/58714f0eb123db4a2eb95372/posts\n'
+                + '来源：掘金\n'
+                + '著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。';
+        } else {
+            textFont = copyFont; // 没超过十个字 则采用被复制的内容。
+        }
+        if (event.clipboardData) {
+            return event.clipboardData.setData('text', textFont); // 将信息写入粘贴板
+        } else {
+            // 兼容IE
+            return window.clipboardData.setData("text", textFont);
+        }
+    }
+
+
+链接：https://juejin.im/post/5b66993ee51d451924734c35
+
+
+
+ // 禁止右键菜单
+    document.body.oncontextmenu = e => {
+        console.log(e, '右键');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止文字选择。
+    document.body.onselectstart = e => {
+        console.log(e, '文字选择');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止复制
+    document.body.oncopy = e => {
+        console.log(e, 'copy');
+        return false; 
+        // e.preventDefault();
+    }
+    // 禁止剪切
+    document.body.oncut = e => {
+        console.log(e, 'cut');
+        return false;
+        // e.preventDefault();
+    };
+    // 禁止粘贴
+    document.body.onpaste = e => {
+        console.log(e, 'paste');
+        return false;
+        // e.preventDefault();
+    };
+    // css 禁止文本选择 这样不会触发js
+    body {
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
