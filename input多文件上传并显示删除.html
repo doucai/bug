@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>input多文件上传并显示删除</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <style>
+            #file{
+                width: 10px;
+            }
+            #delet{
+                cursor: pointer;
+            }
+            .sxx{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #000;
+            }
+        </style>
+</head>
+<body>
+    <input type="file" name="" id="file" multiple=”multiple”>
+    <div id="filename"></div>
+    <script>
+    var html="";
+    //选择上传文件
+    $("#file").change(function(){
+        // 获取到所有待上传文件
+        var file =document.getElementById("file").files;
+        // 循环遍历
+        for(var i=0;i<file.length;i++){
+            html+='<p id="delet"><span id="sv">'+file[i].name+'</span><span class="sxx">X</span></p>';
+        }
+        // append
+        $("#filename").append(html)
+        // 清空相关内容
+        html=""
+        $(this).val("")
+    })
+    //删除当前文件
+    $("#filename").on('click',"#delet",function(){
+        $(this).remove()
+    })
+    </script>
+</body>
+</html>
+
