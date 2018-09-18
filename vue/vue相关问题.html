@@ -6,6 +6,17 @@ vue创建项目2.5：
 通过import引入外部css：
 import './assets/style/reset.css'
 
+
+在img标签中使用图片
+data () {
+    return {
+        img: require('path/to/your/source')
+    }
+}
+eg:<img :src="img" />
+
+
+
 引入fastclick：
 npm install fastclick --save
 
