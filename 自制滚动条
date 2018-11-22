@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>自定义滚动条</title>
+    <style>
+        #scrollView {
+            width: 320px;
+            height: 300px;
+            /*上下边距是为了演示当滚动到顶部或底部时，继续滚动鼠标滚轮会滚动整个页面*/
+            margin: 100px 0;
+            display: flex;
+        }
+
+        #scrollContent {
+            width: 300px;
+            height: 300px;
+            padding-left: 8px;
+            background-color: antiquewhite;
+            /*隐藏超出滚动内容区域的元素*/
+            overflow: hidden;
+        }
+
+        #scrollTrack {
+            width: 20px;
+            height: 300px;
+            background-color: cadetblue;
+            display: flex;
+            /*竖着排列滚动条区域内的上下按钮、滑块等元素*/
+            flex-direction: column;
+        }
+
+        #btnUp,
+        #btnDown {
+            height: 20px;
+            background-color: brown;
+        }
+
+        #scrollBar {
+            height: 50px;
+            background-color: darkblue;
+        }
+
+        #trackDown {
+            /*让大幅度向下滚动点击区域占据排列完其他元素后剩下的所有区域*/
+            flex-grow: 1;
+        }
+
+        /*当拖动滑块时，给body元素加上该类，防止鼠标的拖动导致网页内容的选择操作*/
+        .unselectable {
+            /*当前版本的火狐（53）和Edge（15）不支持user-select标准属性，需要使用浏览器厂商前缀*/
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--滚动视图-->
+    <div id="scrollView">
+        <!--滚动内容-->
+        <div id="scrollContent"></div>
+        <!--滚动条区域-->
+        <div id="scrollTrack">
+            <!--小幅度向上滚动按钮-->
+            <div id="btnUp"></div>
+            <!--大幅度向上滚动点击区域-->
+            <div id="trackUp"></div>
+            <!--滚动条滑块-->
+            <div id="scrollBar"></div>
+            <!--大幅度向下滚动点击区域-->
+            <div id="trackDown"></div>
+            <!--小幅度向下滚动按钮-->
+            <div id="btnDown"></div>
+        </div>
+    </div>
+    <script>
+        var scrollContent = document.getElementById("scrollContent");
+
+        //给滚动内容区域填充大量元素
+        for (var i = 1; i <= 300; i++) {
+            var row = document.createElement("div");
+            row.innerText = "第" + i + "行";
+            scrollContent.appendChild(row);
+        }
+
+        //指示鼠标左键是否处于按下状态的变量，在滑块上按下鼠标左键时设为true，在页面上任意位置松开时设回false
+        //由于鼠标拖动滑块时可能会离开滑块，所以mouseup和mousemove事件是注册在window上的
+        //在mousemove事件处理程序中，会检查该变量，以确定当前是否在拖动滑块
+        var mouseHeld = false;
+        //记录上一次mousemove事件发生时，鼠标的Y轴位置，每次发生mousemove事件时，跟上一次作比较，确定需要滚动多少距离
+        var previousClientY = 0;
+        //滑块可滑动的距离，计算方式为整个滚动条高度度减去上下按钮的高度，再减去滑块本身的高度
+        var barMoveLength = 300 - 20 * 2 - 50;
+        //内容区域可滚动的距离，计算方式为内容区域的总高度减去内容区域本身的高度
+        var contentMoveLength = scrollContent.scrollHeight - 300;
+
+        //为上下按钮注册事件处理程序
+        document.getElementById("btnUp").addEventListener("click", function () {
+            scrollToRelative(-30);
+        });
+        document.getElementById("btnDown").addEventListener("click", function () {
+            scrollToRelative(30);
+        });
+
+        //为大幅度上下滚动点击区域注册事件处理程序
+        //保存trackUp元素变量，因为每次滚动时，都要改变它的高度，以达到移动滑块的效果
+        var trackUp = document.getElementById("trackUp");
+        trackUp.addEventListener("click", function () {
+            scrollToRelative(-300);
+        });
+        document.getElementById("trackDown").addEventListener("click", function () {
+            scrollToRelative(300);
+        });
+
+        //为滑块注册鼠标按下事件处理程序，因为只有在滑块上按下鼠标左键时，才算开始拖动滑块
+        document.getElementById("scrollBar").addEventListener("mousedown", function (e) {
+            mouseHeld = true;
+            previousClientY = e.clientY;
+            //防止页面因为鼠标的拖动而选择上了文本或其他元素
+            document.body.classList.add("unselectable");
+        });
+
+        //鼠标左键松开时可能不在滑块上，所以mouseup事件注册在document上
+        document.addEventListener("mouseup", function (e) {
+            mouseHeld = false;
+            //让页面恢复可选择
+            document.body.classList.remove("unselectable");
+        });
+
+        //鼠标拖动时可能离开滑块，所以mousemove事件也注册在document上
+        document.addEventListener("mousemove", function (e) {
+            if (mouseHeld) {
+                //相对滑动距离计算依据为滑块滑动距离占总可滑动距离的比应与内容滚动距离占总可滚动距离的比相等
+                scrollToRelative((e.clientY - previousClientY) * contentMoveLength / barMoveLength);
+                previousClientY = e.clientY;
+            }
+        });
+
+        //为内容区域注册鼠标滚轮事件处理程序
+        //火狐浏览器使用和其他浏览器不同的滚轮事件和事件参数属性
+        if (navigator.userAgent.indexOf("Firefox") < 0) {
+            scrollContent.addEventListener("mousewheel", function (e) {
+                handleMouseWheel(-e.wheelDelta, e);
+            });
+        } else {
+            scrollContent.addEventListener("DOMMouseScroll", function (e) {
+                handleMouseWheel(e.detail * 30, e);
+            });
+        }
+
+        //确定内容区域当前是否在顶部或底部
+        function isOnTopOrBottom() {
+            //判断是否在底部时，用了向上取整函数，因为在chrome下，滚动到底时，scrollTop常为小数，与contentMoveLength不等，向上取整之后一般相等
+            return scrollContent.scrollTop == 0 || Math.ceil(scrollContent.scrollTop) == contentMoveLength;
+        }
+
+        //鼠标滚轮事件的处理程序，relative为相对滚动距离，e为事件参数
+        function handleMouseWheel(relative, e) {
+            //记录下滚动之前内容区域是否在两端
+            var previousOnTopOrBottom = isOnTopOrBottom();
+            scrollToRelative(relative);
+            //如果现在不在两端，或者现在在两端而滚动之前不在，则屏蔽默认滚轮行为————滚动整个页面
+            //反过来说，只有当“滚动”（实际上内容区域未滚动）前后内容区域都在某一端时，即已经到两端之后继续滚动时，才让滚动整个页面
+            if (!isOnTopOrBottom() || (isOnTopOrBottom() && !previousOnTopOrBottom)) {
+                e.preventDefault();
+            }
+        }
+
+        //将内容区域滚动到某一绝对位置
+        function scrollTo(top) {
+            if (top < 0) {
+                scrollContent.scrollTop = 0;
+            } else if (top > contentMoveLength) {
+                scrollContent.scrollTop = contentMoveLength;
+            } else {
+                scrollContent.scrollTop = top;
+            }
+
+            //设置滑块的位置，这是通过设置滑块上面的大幅度向上滚动点击区域的高度实现的
+            //滑块位置计算依据为滑块距顶部距离占总可滑动距离的比应与内容区域距顶部距离占总可滚动距离的比相等
+            var barDownDistance = scrollContent.scrollTop * barMoveLength / contentMoveLength;
+            trackUp.style.height = barDownDistance + "px";
+        }
+
+        //将内容区域滚动某一相对距离
+        function scrollToRelative(relative) {
+            scrollTo(scrollContent.scrollTop + relative);
+        }
+    </script>
+</body>
+
+</html>
