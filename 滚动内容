@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .scroll {
+            line-height: 28px;
+            border: 2px dashed #666;
+            padding: 0 20px;
+            height: 112px;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll" id="scroll">
+        <div id="inner1">
+            <p>1好好学习天天向上!</p>
+            <p>2好好学习天天向上!</p>
+            <p>3好好学习天天向上!</p>
+            <p>4好好学习天天向上!</p>
+            <p>5好好学习天天向上!</p>
+            <p>6好好学习天天向上!</p>
+            <p>7好好学习天天向上!</p>
+            <p>8好好学习天天向上!</p>
+        </div>
+        <div id="inner2"></div>
+    </div>
+    <script>
+        function srcoll() {
+            var _scroll = document.getElementById("scroll"),
+                _inner1 = document.getElementById("inner1"),
+                _inner2 = document.getElementById("inner2"),
+                speed = 100;
+            _inner2.innerHTML = _inner1.innerHTML;
+
+            function marquee() {
+                if (_inner1.offsetHeight <= _scroll.scrollTop) {
+                    _scroll.scrollTop = 0
+                } else {
+                    _scroll.scrollTop++;
+                    
+                }
+            }
+            var interval = setInterval(marquee, speed);
+            _scroll.onmouseover = function () {
+                clearInterval(interval);
+            }
+            _scroll.onmouseout = function () {
+                interval = setInterval(marquee, speed);
+            }
+        }
+        srcoll()
+    </script>
+
+</body>
+
+</html>
