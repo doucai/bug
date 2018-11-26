@@ -7,3 +7,17 @@ $(document).ready(function () {
   //fixed mobile home page slider width
   $(window).trigger('resize');
 })
+
+
+
+$(window).trigger('resize');等同于  window.onresize = setHtmlFontSize;
+
+
+
+window.onresize = setHtmlFontSize;
+function setHtmlFontSize(){
+    const htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    const htmlDom = document.getElementsByTagName('html')[0];
+    htmlDom.style.fontSize = htmlWidth / 10 + 'px';
+};
+setHtmlFontSize();
