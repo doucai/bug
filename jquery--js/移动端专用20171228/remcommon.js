@@ -10,9 +10,6 @@ $(document).ready(function () {
 
 
 
-$(window).trigger('resize');等同于  window.onresize = setHtmlFontSize;
-
-
 
 window.onresize = setHtmlFontSize;
 function setHtmlFontSize(){
