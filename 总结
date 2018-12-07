@@ -1,0 +1,115 @@
+1，query和params区别
+用法上：query通过path引入，params通过name引入
+显示上：query携带参数，params不带参数
+
+2，soucetree代码合并冲突，先推送到本地仓库，再去拉取代码，修改后提交。
+
+3，event loop :主线程循环地从任务队列中读取事件的过程就是event loop
+
+4，keep-alive生命周期钩子函数：activated、deactivated
+使用<keep-alive>会将数据保留在内存中，如果要在每次进入页面的时候获取最新的数据，需要在activated阶段获取数据，
+承担原来created钩子中获取数据的任务。（注意：使用keep-alive后，只有在初次创建模块的时候会调用created钩子）
+
+5，$nexttack:是在下次更新循环结束后延时执行回调，在修改数据后可以在回调中获取跟新后的dom
+
+6， mixin:混入，个人理解mixins就是定义一部分公共的方法或者计算属性,然后混入到各个组件中使用,方便管理与统一修改，
+如果组件中定义的方法与混入对象中的方法/属性一样,组件中的优先级大于混入对象中的(方法会调用多次)
+
+7，slot：具名插槽和不具名插槽，具名插槽通过name引用相关组件。
+父组件模板的所有东西都会在父级作用域内编译；子组件模板的所有东西都会在子级作用域内编译。
+可以通过 this.$slots 访问静态插槽的内容，得到的是一个 VNodes 数组：
+render: function (createElement) {
+  // `<div><slot></slot></div>`
+  return createElement('div', this.$slots.default)
+}
+也可以通过 this.$scopedSlots 访问作用域插槽，得到的是一个返回 VNodes 的函数：
+props: ['message'],
+render: function (createElement) {
+  // `<div><slot :text="message"></slot></div>`
+  return createElement('div', [
+    this.$scopedSlots.default({
+      text: this.message
+    })
+  ])
+}
+
+8，watch 和 computed的异同：
+相同点：二者都可以监听数据的变化，
+不同点：watch每次变化都会去执行函数，computed在数据未发生变化时会优先读取缓存里面的内容，只有在相关
+的数据发生变化时才会改变要计算的属性
+
+9，vue-resource的interceptors拦截器：
+vue-resource的interceptors拦截器在每次http的请求响应之后，如果设置了拦截器，会优先执行拦截器函数，
+获取响应体，然后才会决定是否把response返回给then进行接收
+     1 .请求拦截：request     axios.interceptors.request.use(function(){ do something })
+     2 .响应拦截：response   axios.interceptors.response.use(function(){ do something })
+10，
+数组去重：
+Array.from(new set(arr))  或者 new set (...arr)
+
+排序
+const a=[1,6,30,4]  ; 
+
+a.sort(function(a,b){return a>b})
+
+[1, 4, 6, 30]
+
+
+a.sort(function(a,b){return a<b})
+
+[30, 6, 4, 1]
+
+
+随机打乱数组
+var arr = [4,1,67,12,45,121,3];
+arr.sort(function() {
+     return (0.5-Math.random());
+})
+
+11.qs.parse()、qs.stringify()、JSON.stringify() 用法及区别：
+qs是一个npm仓库所管理的包，可通过npm install qs命令进行安装。
+qs.stringify()将对象序列化成URL的形式，以&进行拼接。
+qs.parse()将URL解析成对象的形式 。
+JSON.stringify()是正常类型的JSON。
+
+12.interceptors数据请求前置拦截
+ Vue.http.interceptors.push(function(request,next){
+                        
+ 	console.log("正在请求");
+                     
+	next(function(response){
+                           
+	        console.log(response.data);
+                            
+	        console.log("响应完成")
+                        
+	})
+                    
+})
+
+
+13.异步组件
+ 1，  Vue.component('async-example', function (resolve, reject) {
+           setTimeout(function () {
+          // 向 `resolve` 回调传递组件定义
+             resolve({
+                template: '<div>I am async!</div>'
+            })
+           } , 1000)
+        })
+  2，Vue.component('async-webpack-example', function (resolve) {
+ 	 // 这个特殊的 `require` 语法将会告诉 webpack
+  	// 自动将你的构建代码切割成多个包，这些包
+  	// 会通过 Ajax 请求加载
+  	require(['./my-async-component'], resolve)
+       })
+  3，当使用局部注册的时候，你也可以直接提供一个返回 Promise 的函数：
+        new Vue({
+               components: {
+ 	   'my-component': () => import('./my-async-component')
+	}
+        })
+
+14. v-if 和 v-show  的区别：v-if类似于注释，v-show只是简单地display:none/block的切换
+
+
