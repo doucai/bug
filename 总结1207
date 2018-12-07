@@ -112,4 +112,7 @@ JSON.stringify()是正常类型的JSON。
 
 14. v-if 和 v-show  的区别：v-if类似于注释，v-show只是简单地display:none/block的切换
 
+15. 单选框，复选框 中 v-model 总是和 value 一起使用
+    单选框中：selected（选择值）是字符串，
+    复选框中：selected（选择值）是数组，
 
