@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>国家级</div>
+    <p>最大</p>
+    <p>世界级</p>
+    <p>最佳</p>
+    <script>
+      //敏感词替换
+    var ThContainer=document.getElementsByTagName('body')[0].innerText;
+    function replaceAll(obj,str1,str2){ 
+        var result = obj.replace(eval("/"+str1+"/gi"),str2); 
+        ThContainer=result
+        document.getElementsByTagName('body')[0].innerText=ThContainer;
+        return result; 
+    }
+    replaceAll(ThContainer,"国家级","国民青睐");
+    replaceAll(ThContainer,"世界级","全民青睐");
+    replaceAll(ThContainer,"最佳","较好");
+    replaceAll(ThContainer,"最大","较大");
+    replaceAll(ThContainer,"首选","较佳选择");
+    replaceAll(ThContainer,"最好","较好");
+    replaceAll(ThContainer,"顶级","高级");
+    replaceAll(ThContainer,"最高","较高");
+    replaceAll(ThContainer,"最低","较低");
+    replaceAll(ThContainer,"最具","极具");
+    replaceAll(ThContainer,"最便宜","极其优惠");
+    replaceAll(ThContainer,"最新","较新");
+    replaceAll(ThContainer,"优秀","出色");
+    replaceAll(ThContainer,"最先","较先");
+    replaceAll(ThContainer,"最时尚","fashion");
+    replaceAll(ThContainer,"极品","TOP LEVEL");
+    replaceAll(ThContainer,"顶尖","高级");
+    replaceAll(ThContainer,"终极","穷尽");
+    replaceAll(ThContainer,"最受欢迎","较受欢迎");
+    replaceAll(ThContainer,"精确","准确");
+    replaceAll(ThContainer,"绝对","相对");
+    replaceAll(ThContainer,"极致","完美");
+    replaceAll(ThContainer,"永久","长期");
+    replaceAll(ThContainer,"万能","全面");
+    replaceAll(ThContainer,"无依赖","可中断使用");
+    replaceAll(ThContainer,"第一","First");
+    replaceAll(ThContainer,"唯一","First");
+    replaceAll(ThContainer,"首个","First");
+    replaceAll(ThContainer,"独家","尚无第二家");
+    replaceAll(ThContainer,"首家","尚无第二家");
+    replaceAll(ThContainer,"世界领先","一马当先");
+    replaceAll(ThContainer,"NO.1","First");
+    replaceAll(ThContainer,"Top1","First");
+    replaceAll(ThContainer,"独一无二","无与伦比");
+    replaceAll(ThContainer,"绝无仅有","尚无第二家");
+    replaceAll(ThContainer,"史无前例","尚无第二家");
+    replaceAll(ThContainer,"金牌","交口称赞");
+    replaceAll(ThContainer,"名牌","名列前茅");
+    replaceAll(ThContainer,"王牌","交口称赞");
+    replaceAll(ThContainer,"VS","比较");
+    replaceAll(ThContainer,"PK","比较");
+    replaceAll(ThContainer,"祖传","传承");
+    replaceAll(ThContainer,"第一品牌","首席品牌");
+    replaceAll(ThContainer,"掌门人","带头人");
+    replaceAll(ThContainer,"秘方","传承配方");
+    replaceAll(ThContainer,"根治","治疗");
+    replaceAll(ThContainer,"根除","治疗");
+    replaceAll(ThContainer,"治愈","治疗");
+    replaceAll(ThContainer,"日减","减轻");
+    replaceAll(ThContainer,"代言","推荐");
+    replaceAll(ThContainer,"王守军","皮肤美容院长");
+    replaceAll(ThContainer,"王主任","皮肤美容院长");
+    replaceAll(ThContainer,"整形医生王守军","皮肤美容院长");
+    replaceAll(ThContainer,"皮肤美容中心王主任","皮肤美容院长");
+    replaceAll(ThContainer,"全球","东方");
+    replaceAll(ThContainer,"全国","华东");
+    replaceAll(ThContainer,"权威","知名");
+    replaceAll(ThContainer,"美莱","天大");
+    replaceAll(ThContainer,"仁爱","天大");
+    replaceAll(ThContainer,"艺星","天大");
+    replaceAll(ThContainer,"华美","天大");
+    replaceAll(ThContainer,"玫瑰","天大");
+    replaceAll(ThContainer,"时光","天大");
+    replaceAll(ThContainer,"美联臣","天大");
+    replaceAll(ThContainer,"首尔丽格","天大");
+    replaceAll(ThContainer,"伊莱美","天大");
+    replaceAll(ThContainer,"美仑","天大");
+    replaceAll(ThContainer,"百达丽","天大");
+    replaceAll(ThContainer,"伊美尔港华","天大");
+    replaceAll(ThContainer,"伊美尔","天大");
+    replaceAll(ThContainer,"八大处","天大");
+    replaceAll(ThContainer,"杏林","天大");
+    replaceAll(ThContainer,"米兰柏羽","天大");
+    replaceAll(ThContainer,"爱思特","天大");
+    replaceAll(ThContainer,"伽美","天大");
+    replaceAll(ThContainer,"金圣","天大");
+    replaceAll(ThContainer,"西婵","天大");
+    replaceAll(ThContainer,"希思","天大");
+    replaceAll(ThContainer,"顺德玛丽亚","天大");
+    replaceAll(ThContainer,"艾尚","天大");
+    replaceAll(ThContainer,"壹加壹","天大");
+    replaceAll(ThContainer,"天申","天大");
+    replaceAll(ThContainer,"曙光","天大");
+    replaceAll(ThContainer,"韩妃","天大");
+    replaceAll(ThContainer,"当代整形","天大整形");
+    replaceAll(ThContainer,"叶子整形","天大整形");
+    replaceAll(ThContainer,"021-64080808","400-013-9399");
+    replaceAll(ThContainer,"021-64080808","400-013-9399");
+        
+    </script>
+</body>
+</html>
